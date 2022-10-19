@@ -1,0 +1,52 @@
+﻿@model DigitalPartnersTask.Models.Shift
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Shift</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ShiftWorker" class="control-label"></label>
+                <select asp-for="ShiftWorker" class="form-control" asp-items="ViewBag.ShiftWorker">
+                    <option value="">Vælg medarbejder</option>
+                </select>
+                <span asp-validation-for="ShiftWorker" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShiftStart" class="control-label">ShiftStart</label>
+                <input asp-for="ShiftStart" class="form-control" />
+                <span asp-validation-for="ShiftStart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShiftEnd" class="control-label">ShiftEnd</label>
+                <input asp-for="ShiftEnd" class="form-control" />
+                <span asp-validation-for="ShiftEnd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tasks" class="control-label"></label>
+                <select asp-for="Tasks" id="lstTasks" name="lstTasks" class="form-control" asp-items="ViewBag.Tasks" multiple="multiple">
+                    <option value="">Vælg opgaver</option>
+                </select>
+                <span asp-validation-for="Tasks" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
